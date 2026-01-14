@@ -1,0 +1,19 @@
+node_modules/
+.env
+
+# Extracted data
+extracted/html/*
+extracted/markdown/*
+extracted/plain-text/*
+extracted/screenshots/*
+extracted/videos/*
+
+# Keep example files
+!extracted/html/example.html
+!extracted/markdown/example.md
+!extracted/plain-text/example.txt
+!extracted/screenshots/example.png
+
+# System files
+.DS_Store
+Thumbs.db
