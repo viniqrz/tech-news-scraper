@@ -10,7 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "dotenv": "^17.2.3",
     "playwright": "^1.57.0",
-    "prettier": "^3.7.4"
+    "prettier": "^3.7.4",
+    "slugify": "^1.6.6"
   }
 }

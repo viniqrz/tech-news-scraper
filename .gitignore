@@ -17,3 +17,7 @@ extracted/videos/*
 # System files
 .DS_Store
 Thumbs.db
+
+# Temporary/Generated files
+generated/
+test_models.js
