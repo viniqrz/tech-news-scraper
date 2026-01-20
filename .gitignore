@@ -2,17 +2,17 @@ node_modules/
 .env
 
 # Extracted data
-extracted/html/*
-extracted/markdown/*
-extracted/plain-text/*
-extracted/screenshots/*
-extracted/videos/*
+extracted/html/**/*
+extracted/markdown/**/*
+extracted/plain-text/**/*
+extracted/screenshots/**/*
+extracted/videos/**/*
 
 # Keep example files
-!extracted/html/example.html
-!extracted/markdown/example.md
-!extracted/plain-text/example.txt
-!extracted/screenshots/example.png
+!extracted/html/tldr/example.html
+!extracted/markdown/tldr/example.md
+!extracted/plain-text/tldr/example.txt
+!extracted/screenshots/tldr/example.png
 
 # System files
 .DS_Store

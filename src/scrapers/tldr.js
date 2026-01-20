@@ -21,11 +21,11 @@ function getLastNdays(n) {
 // Ensure directories exist
 function ensureDirs() {
     const dirs = [
-        path.join(__dirname, '../../extracted/html'),
-        path.join(__dirname, '../../extracted/markdown'),
-        path.join(__dirname, '../../extracted/plain-text'),
-        path.join(__dirname, '../../extracted/screenshots'),
-        path.join(__dirname, '../../extracted/videos')
+        path.join(__dirname, '../../extracted/html/tldr'),
+        path.join(__dirname, '../../extracted/markdown/tldr'),
+        path.join(__dirname, '../../extracted/plain-text/tldr'),
+        path.join(__dirname, '../../extracted/screenshots/tldr'),
+        path.join(__dirname, '../../extracted/videos/tldr')
     ];
     dirs.forEach(dir => {
         if (!fs.existsSync(dir)) {
@@ -144,7 +144,7 @@ const DAYS_TO_SCRAPE = daysArgIndex !== -1 ? parseInt(args[daysArgIndex + 1], 10
     });
     
     // Create context (with optional video recording)
-    const videosDir = path.join(__dirname, '../../extracted/videos');
+    const videosDir = path.join(__dirname, '../../extracted/videos/tldr');
     const contextOptions = RECORD_VIDEO ? {
         recordVideo: {
             dir: videosDir,
@@ -184,7 +184,7 @@ const DAYS_TO_SCRAPE = daysArgIndex !== -1 ? parseInt(args[daysArgIndex + 1], 10
             // Save screenshot (optional, non-blocking)
             if (TAKE_SCREENSHOTS) {
                 try {
-                    const screenshotPath = path.join(__dirname, `../../extracted/screenshots/${date}-${timestamp}.png`);
+                    const screenshotPath = path.join(__dirname, `../../extracted/screenshots/tldr/${date}-${timestamp}.png`);
                     await page.screenshot({ path: screenshotPath, timeout: 10000 });
                     console.log(`[${date}] Screenshot saved`);
                 } catch (e) {
@@ -194,20 +194,20 @@ const DAYS_TO_SCRAPE = daysArgIndex !== -1 ? parseInt(args[daysArgIndex + 1], 10
 
             // Save plain text
             const plainText = await page.evaluate(() => document.body.innerText);
-            const textPath = path.join(__dirname, `../../extracted/plain-text/${date}.txt`);
+            const textPath = path.join(__dirname, `../../extracted/plain-text/tldr/${date}.txt`);
             fs.writeFileSync(textPath, plainText, 'utf-8');
             console.log(`[${date}] Plain text saved`);
             
             // Save cleaned HTML (text tags only), formatted with Prettier
             const cleanHtml = await extractTextHtml(page);
             const formattedHtml = await prettier.format(cleanHtml, { parser: 'html' });
-            const htmlPath = path.join(__dirname, `../../extracted/html/${date}.html`);
+            const htmlPath = path.join(__dirname, `../../extracted/html/tldr/${date}.html`);
             fs.writeFileSync(htmlPath, formattedHtml, 'utf-8');
             console.log(`[${date}] Formatted HTML saved`);
             
             // Build markdown from the HTML
             const markdown = buildMarkdownFromHtml(formattedHtml);
-            const mdPath = path.join(__dirname, `../../extracted/markdown/${date}.md`);
+            const mdPath = path.join(__dirname, `../../extracted/markdown/tldr/${date}.md`);
             fs.writeFileSync(mdPath, markdown, 'utf-8');
             console.log(`[${date}] Markdown saved\n`);
             
