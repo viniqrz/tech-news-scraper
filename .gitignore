@@ -2,11 +2,7 @@ node_modules/
 .env
 
 # Extracted data
-extracted/html/**/*
-extracted/markdown/**/*
-extracted/plain-text/**/*
-extracted/screenshots/**/*
-extracted/videos/**/*
+extracted/*
 
 # Keep example files
 !extracted/html/tldr/example.html
